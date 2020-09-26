@@ -1,0 +1,28 @@
+<div class="app">
+    <div class="contain">
+        <form action="/data/<%=@user_id%>/update" method="post">
+            <div>
+                <label for="refirst_weight">初期体重: </label>
+                <input type="number" name="refirst_weight"><span>kg</span>
+            </div>
+            <div>
+                <label for="regoal_weight">目標体重: </label>
+                <input type="number" name="regoal_weight"><span>kg</span>
+            </div>
+            <div>
+                <label for="refirst_date">開始日: </label>
+                <input type="date" name="refirst_date">
+            </div>
+            <div>
+                <label for="reperiod">目標達成までの日数: </label>
+                <input type="number" name="reperiod"><span>日</span>
+            </div>
+            <div>
+                <label for="recon_kcal">1日の平均消費カロリー: </label>
+                <input type="number" name="recon_kcal"><span>kcal</span>
+            </div>
+            <input type="hidden" name="_method" value="PUT">
+            <input class="btn-req" type="submit" value="更新">
+        </form>
+    </div>
+</div>

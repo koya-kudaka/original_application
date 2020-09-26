@@ -1,0 +1,101 @@
+body{
+    color: black;
+    background-color: white;
+    font-size: 20px;
+}
+
+.title {
+    color: rgb(255, 99, 132);
+    padding: 150px 0 70px 0;
+    width: 100%;
+}
+
+h2 {
+    color: pink;
+    padding-bottom: 30px;
+}
+
+h3 {
+    color: rgb(255, 99, 132);
+}
+
+p {
+    color: black;
+}
+
+input {
+    margin-top: 20px;
+}
+
+header {
+    width: 100%;
+    height: 90px;
+    background-color: pink;
+    padding-top: 30px;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+
+footer {
+    width: 100%;
+    height: 60px;
+    background-color: pink;
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+}
+
+.contain {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.container {
+    width: 80%;
+    margin: 15px auto;
+}
+
+.header-left {
+    float: left;
+}
+
+.header-right {
+    float: right;
+}
+
+.page {
+    display: inline-block;
+}
+
+#top {
+    text-align: center;
+}
+
+.app{
+    width: 100%;
+    padding-bottom: 60px;
+    text-align: center;
+}
+
+/* posts.erb */
+.posts {
+    padding-bottom: 80px;
+}
+
+.dis-post {
+    border: solid 1px black;
+}
+
+.btn-heart {
+    color: black;
+}
+
+.active {
+    color: red;
+}
+
+.posts-img {
+    max-width: 100px;
+    max-height: 100px;
+}

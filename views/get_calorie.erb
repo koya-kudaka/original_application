@@ -1,0 +1,19 @@
+<div class="app">
+    <div class="contain">
+        <h2><%=@user_name%>の必要摂取カロリーを調べよう！</h2>
+        <form action="/calorie/get/<%=@user_id%>" method="post">
+            <label for="get_calorie">追加する摂取カロリー: </label>
+            <input type="number" name="get_calorie"><span>キロカロリー</span>
+            <input type="submit" value="送信">
+        </form>
+        <div>
+            <% unless @user_kcal.nil? || @user_kcal['total_kcal'] == 0 %>
+                <p>今日のトータル摂取カロリー</p><h3><%="#{@user_kcal['total_kcal']}"%><span>kcal</span></h3>
+                <p>目標カロリー</p><h3><%="#{@goal_kcal['goal_kcal']}"%><span>kcal</span></h3>
+            <% end %>
+            <p>あなたが必要なカロリー</p><h3><%=@need_kcal%><span>キロカロリー</span></h3>
+        </div>
+    </div>
+</div>
+
+

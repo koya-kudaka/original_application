@@ -1,0 +1,53 @@
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>健康アプリ</title>
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://kit.fontawesome.com/f66ba1a88c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <% if session[:user] %>
+        <header>
+            <div class="contain">
+                <div class="header-left">
+                    <form class="page logout" action="/logout" method="post">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit">ログアウト</button>
+                    </form>
+                </div>
+                <div class="header-right">
+                    <form class="page" action="http://localhost:4567/data/<%=session[:user]['user_id']%>">
+                        <button type="submit">あなたのデータ</button>
+                    </form>
+                    <form class="page" action="http://localhost:4567/calorie/get/<%=session[:user]['user_id']%>">
+                        <button type="submit">必要摂取カロリーを計算する</button>
+                    </form>
+                    <form class="page" action="http://localhost:4567/weight/<%=session[:user]['user_id']%>">
+                        <button type="submit">体重を記録する</button>
+                    </form>
+                    <form class="page" action="http://localhost:4567/posts">
+                        <button type="submit">投稿</button>
+                    </form>
+                </div>
+            </div>
+        </header>
+    <% end %>
+    <div id="top">
+        <h1 class="title">HealthApp</h1>
+    </div>
+    <%= yield %>
+    <% if session[:user] %>
+        <footer></footer>
+    <% end %>
+    <script 
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+    <script src='/js/bootstrap.bundle.min.js'></script>
+    <script src='/js/bootstrap.min.js'></script>
+    <script src="/js/custom.js"></script>
+</body>
+</html>

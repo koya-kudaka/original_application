@@ -1,0 +1,39 @@
+<div class="app">
+    <div class="container">
+        <h2>日記投稿</h2>
+        <div class="row posts">
+            <div class="col-4">
+                <form action="/posts" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="name" value="<%= session[:user]['name'] %>">
+                    <input type="hidden" name="user_id" value="<%= session[:user]['user_id'] %>">
+                    <div>
+                        <label for="content">内容: </label>
+                        <textarea name="content" col=50 row=10></textarea>
+                    </div>
+                    <div>
+                        <label for="img"></label>
+                        <input type="file" name="img">
+                    </div>
+                    <input class="btn-req" type="submit" value="投稿">
+                </form>
+            </div>
+            <div class="col-8">
+                <% @posts.each do |post| %>
+                    <div class="dis-post">
+                        <h3><%=post['name']%>(@<%=post['user_id']%>)</h3>
+                        <p><%=post['content']%></p>
+                        <%if post['image_path']%>
+                            <img class="posts-img" src="/images/<%= post['image_path'] %>">
+                        <%end%>
+                        <p><%=post['created_at']%></p>
+                        <form action="/like" method="post">
+                            <input type="hidden" name="post_id" value="<%= post['id'] %>">
+                            <input type="hidden" name="user_id" value="<%= session[:user]['user_id'] %>">
+                            <button type="submit" class="btn btn-like">いいね！<i class="btn-heart fas fa-heart"></i></button><span><%=post['count_get_like']%></span>
+                        </form>
+                    </div>
+                <%end%>
+            </div>
+        </div>
+    </div>
+</div>

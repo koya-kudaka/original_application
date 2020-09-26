@@ -1,0 +1,39 @@
+<div class="app">
+    <div class="contain">
+        <h2><%=@user_name%>のページ情報</h2>
+        <% if @user_data.nil? %>
+            <form action="/data/<%=@user_id%>" method="post">
+                <div>
+                    <label for="first_weight">初期体重: </label>
+                    <input type="number" name="first_weight"><span>kg</span>
+                </div>
+                <div>
+                    <label for="goal_weight">目標体重: </label>
+                    <input type="number" name="goal_weight"><span>kg</span>
+                </div>
+                <div>
+                    <label for="first_date">開始日: </label>
+                    <input type="date" name="first_date">
+                </div>
+                <div>
+                    <label for="period">目標達成までの日数: </label>
+                    <input type="number" name="period"><span>日</span>
+                </div>
+                <div>
+                    <label for="con_kcal">1日の平均消費カロリー: </label>
+                    <input type="number" name="con_kcal"><span>kcal</span>
+                </div>
+                <input class="btn-req" type="submit" value="送信">
+            </form>
+        <% else %>
+            <p><span>あなたの初期体重: </span><%="#{@user_data['first_weight']}"%>kg</p>
+            <p><span>あなたの目標体重: </span><%="#{@user_data['goal_weight']}"%>kg</p>
+            <p><span>開始日: </span><%="#{@user_data['first_date']}"%></p>
+            <p><span>期間: </span><%="#{@user_data['period']}"%>日間</p>
+            <p><span>1日の平均消費カロリー: </span><%="#{@user_data['con_kcal']}"%>kcal</p>
+            <form action="http://localhost:4567/data/<%=@user_id%>/edit">
+                <input class="btn-req" type="submit" value="変更">
+            </form>
+        <% end %>
+    </div>
+</div>

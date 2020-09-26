@@ -1,0 +1,43 @@
+<div class="app">
+    <div class="container">
+        <h2>あなたの体重グラフ</h2>
+        <div>
+            <canvas id="myChart" width="300" height="100"></canvas>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+            <script>
+                var x_day = <%=@day%>, y_weight = <%=@weight%>
+                var ctx = document.getElementById('myChart').getContext('2d');
+                var chart = new Chart(ctx, {
+                    // The type of chart we want to create
+                    type: 'line',
+
+                    // The data for our dataset
+                    data: {
+                        labels: x_day,
+                        datasets: [{
+                            label: 'Weight',
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            data: y_weight
+                        }]
+                    },
+                    // Configuration options go here
+                    options: {}
+                });
+            </script>
+        </div>
+    </div>
+    <div class="contain">
+        <form action="/weight/<%=@user_id%>" method="post">
+            <div>
+                <label for="weight">体重: </label>
+                <input type="number" step="0.1" name="weight"><span>kg</span>
+            </div>
+            <div>
+                <label for="date">日付: </label>
+                <input type="date" name="date">
+            </div>
+            <input  class="btn-req" type="submit" value="記録">
+        </form>
+    </div>
+</div>
